@@ -1,0 +1,21 @@
+.rightAlign
+{
+    display: flex; justify-content: center;margin-top: 1cm;margin-bottom: 1cm;
+}
+
+.margin
+{
+    margin-top:1cm;
+}
+
+.centerAlign
+{
+    display: flex; justify-content: center;
+}
+.progressBar
+{
+    text-align: center;
+    border-radius: 15px ;
+    height:18px;
+    
+}

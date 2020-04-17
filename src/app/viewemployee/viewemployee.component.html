@@ -1,0 +1,142 @@
+<app-navbar></app-navbar>
+
+<div class="container align">
+  <div class="row">
+    <div class="col-md-4">
+      <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#deleteModal">Delete Employee</button>
+    </div>
+    <div class="col-md-4">
+      <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#updateReportModal">Update Reports</button>
+    </div>
+    <div class="col-md-4">
+      <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#projectModal">Assign Project</button>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+<div class="alert alert-dark banner" role="alert">
+    <h6>EMPLOYEE DETAILS</h6>
+</div>
+
+<div class="table-responsive">
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Employee ID</th>
+        <th scope="col">Employee Name</th>
+        <th scope="col">Designation</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Email </th>
+        <th scope="col">Work Type</th>
+        <th scope="col">Employee Mobile</th>
+      </tr>
+    </thead>
+    <tbody >
+      <tr *ngFor="let employee of employeeDetails">
+        <th scope="row">{{employee.id}}</th>
+        <td>{{employee.name}}</td>
+        <td>{{employee.department}}</td>
+        <td>{{employee.gender}}</td>
+        <td>{{employee.email}}</td>
+        <td>{{employee.type}}</td>
+        <td>{{employee.mobile}}</td>
+
+      </tr>
+    </tbody>
+</table> 
+</div>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Enter the Employee ID : </h5>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <input [(ngModel)]="deleteId" class="form-control" name="id" required>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-dismiss="modal">Exit</button>
+        <button type="button" class="btn btn-dark" data-dismiss="modal" (click)="deleteEmployee()" >Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="updateReportModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Enter the Employee ID : </h5>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="exampleInputEmail1"><b>Employee Id : </b></label>
+          <input [(ngModel)]="reports.id" class="form-control" name="pid" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1"><b>Employee KPI :  </b></label>
+          <input [(ngModel)]="reports.kpi" class="form-control" name="pid" required>
+        </div>
+        <div class="form-group">
+          <label for="disabledSelect"><b>Employee Position :  </b></label>
+          <select [(ngModel)]="reports.position" name="status" class="form-control">
+            <option>Junior</option>
+            <option>Senior</option>
+            <option>Lead</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="disabledSelect"><b>Employee Status :  </b></label>
+          <select [(ngModel)]="reports.status" name="status" class="form-control">
+            <option>Poor</option>
+            <option>Good</option>
+            <option>Fair</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Comments : </label>
+          <textarea  [(ngModel)]="reports.comment" name="panme" class="form-control" rows="5" id="comment"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-dark" data-dismiss="modal" (click)="updateReport()" >Update</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Project Details : </h5>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Project ID</label>
+          <input [(ngModel)]="Project.id" class="form-control" name="pid" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Employee ID</label>
+          <input [(ngModel)]="Project.employeeid" class="form-control" name="eid" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Project Name</label>
+          <input [(ngModel)]="Project.name" class="form-control" name="panme" required>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-dark" data-dismiss="modal" (click)="assignProject()" >Assign</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

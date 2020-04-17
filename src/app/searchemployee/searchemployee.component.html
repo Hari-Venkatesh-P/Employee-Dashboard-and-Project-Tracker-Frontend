@@ -1,0 +1,120 @@
+<app-navbar></app-navbar>
+
+<div class="rightAlign">
+    <form class="form-inline">
+        <label class="sr-only" for="inlineFormInputName2">Enter the Employee Id</label>
+        <input type="text" [(ngModel)]="searchId" name= "id" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Employee Id">
+        <button type="submit" class="btn btn-dark mb-2" (click)="searchEmployee()">Search</button>
+    </form>
+</div>
+<div *ngIf="employee.id">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card bg-light">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-6"><h5>Employee ID : </h5></div>
+                            <div class="col-md-6"> <h5 class="card-text">{{employee.id}}</h5></div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6"><b><p class="card-title">Employee Name:</p></b></div>
+                            <div class="col-md-6"> <p class="card-text">{{employee.name}}</p></div>
+                        </div>
+                    <div class="row">
+                            <div class="col-md-6"><b><p class="card-title">Employee Designation:</p></b></div>
+                            <div class="col-md-6"> <p class="card-text">{{employee.department}}</p></div>
+                    </div>
+                    <div class="row">
+                            <div class="col-md-6"><b><p class="card-title">Work Type:</p></b></div>
+                            <div class="col-md-6"> <p class="card-text">{{employee.type}}</p></div>
+                    </div>
+                    <div class="row">
+                            <div class="col-md-6"><b><p class="card-title">Employee Mobile:</p></b></div>
+                            <div class="col-md-6"> <p class="card-text">{{employee.mobile}}</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card bg-light">
+                <div class="card-header">
+                    <div class="col-md-10"><h5>Employee Scores</h5></div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6"><b><p class="card-title">Position :</p></b></div>
+                        <div class="col-md-6"> <p class="card-text">{{reports.position}}</p></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6"><b><p class="card-title">KPI :</p></b></div>
+                        <div class="col-md-6"> <p class="card-text">{{reports.kpi}}</p></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6"><b><p class="card-title">Status :</p></b></div>
+                        <div class="col-md-6"> <p class="card-text">{{reports.status}}</p></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6"><b><p class="card-title">Comments :</p></b></div>
+                        <div class="col-md-6"> <p class="card-text">{{reports.comment}}</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row margin">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="col-md-10"><h5>Current projects</h5></div>
+                </div>
+                <div class="card-body" *ngFor="let project of projectDetails">
+                    <div class="row">
+                        <div class="col-md-6"><b><p class="card-title">Project ID:</p></b></div>
+                        <div class="col-md-6"> <div class="col-md-6"> <p class="card-text">{{project.id}}</p></div></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6"><b><p class="card-title">Project Name:</p></b></div>
+                        <div class="col-md-6"> <p class="card-text">{{project.name}}</p></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6"><b><p class="card-title">Project Status:</p></b></div>
+                        <div class="col-md-6"> <p class="card-text">{{project.status}}</p></div>
+                    </div>
+                    <div class="row"><div class="col-md-6"><b><p class="card-title">Project Progress :</p></b></div></div>
+                    <div class="progressBar" [style.background-color]="(project.progress > 70) ? 'green' : (project.progress > 30) ? 'yellow' : 'red' "  [style.width.%] ="project.progress" >
+                        <h6><b>{{project.progress}}</b></h6> 
+                    </div>
+                    <div class="row margin">
+                        <div class="col-md-12 ">
+                            <button type="button" class="btn btn-dark centerAlign" data-toggle="modal" data-target="#deleteProject">Remove Project</button>
+                        </div>
+                    </div>
+                
+                    <div class="modal fade"  id="deleteProject" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLongTitle">Confirm the Project Id : </h5>
+                            </div>
+                            <div class="modal-body">
+                                <input type="text" class="form-control" placeholder="Username"  value="{{project.id}}"aria-describedby="basic-addon1"  #name>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-dark" data-dismiss="modal" (click)="removeProject(name)">Remove</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+
+  
+

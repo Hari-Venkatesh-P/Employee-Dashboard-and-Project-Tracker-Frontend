@@ -1,0 +1,10 @@
+.formBorder
+{
+  border: 5px double #a9a9a9;
+  padding: 50px;
+  margin: 20px;
+}
+.centerAlign
+{
+    display: flex; justify-content: center;
+}
