@@ -59,9 +59,9 @@ export class AddemployeeComponent implements OnInit {
       .subscribe((data:any) => 
       {
         window.alert(data.message);
-        window.location.reload();
       }
       );
+      window.location.reload();
     }
   }
 }
