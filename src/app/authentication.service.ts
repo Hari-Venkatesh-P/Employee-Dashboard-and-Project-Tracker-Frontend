@@ -22,7 +22,7 @@ export class AuthenticationService {
     console.log(username);
     console.log(password);
     const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) });
-    return this.httpClient.get<ApiResponse>('http://localhost:8080/validate/tokenvalidation',{headers}).pipe(
+    return this.httpClient.get<ApiResponse>('https://employeebackend.herokuapp.com/validate/tokenvalidation',{headers}).pipe(
      map(
        userData => {
         sessionStorage.setItem('username',username);
@@ -36,7 +36,7 @@ export class AuthenticationService {
 
   public loginUser(userid:string,password:string)
   {
-    return this.httpClient.get("http://localhost:8080/validate/loginvalidation/"+userid+"/"+password);
+    return this.httpClient.get("https://employeebackend.herokuapp.com/validate/loginvalidation/"+userid+"/"+password);
   }
 
   isUserLoggedIn() {
