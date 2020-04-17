@@ -56,8 +56,12 @@ export class AddemployeeComponent implements OnInit {
       this.employeeForm.value["id"] = this.maxEmpID;
       console.log(this.employeeForm.value);
       this.httpService.addEmployee((this.employeeForm.value))
-      .subscribe((data:any) => window.alert(data.message));
-      window.location.reload();
+      .subscribe((data:any) => 
+      {
+        window.alert(data.message);
+        window.location.reload();
+      }
+      );
     }
   }
 }
