@@ -1,0 +1,22 @@
+{
+    "start_url":"/index.html",
+    "short_name":"Employee Application",
+    "name":"Employee Dashborad and Project Tracker",
+    "description":"Web application useful for managing the employees and tracking their current projects.",
+    "icons":[
+        {
+            "src":"https://cdn4.vectorstock.com/i/1000x1000/16/53/young-and-successful-business-man-cartoon-employee-vector-15281653.jpg",
+            "type":"image/jpg",
+            "sizes":"96x96"
+        },
+        {
+            "src":"https://cdn4.vectorstock.com/i/1000x1000/16/53/young-and-successful-business-man-cartoon-employee-vector-15281653.jpg",
+            "type":"image/jpg",
+            "sizes":"192x192"
+        }
+    ],
+    "display":"standalone",
+    "background_color":"#696969",
+    "theme_color":"#800080",
+    "scope":"/"
+}

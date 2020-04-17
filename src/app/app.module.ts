@@ -15,6 +15,8 @@ import { HomecomponentComponent } from './homecomponent/homecomponent.component'
 import { LoginComponent } from './login/login.component';
 import {BasicAuthHtppInterceptorService} from './basic-auth-htpp-interceptor.service';
 import { ProfileComponent } from './profile/profile.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { ProfileComponent } from './profile/profile.component';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [{  
     provide:HTTP_INTERCEPTORS, useClass:BasicAuthHtppInterceptorService, multi:true 
