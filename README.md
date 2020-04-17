@@ -1,4 +1,4 @@
-# Securityapp
+# Employee Dashboard and Project Tracker Application
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0.
 
