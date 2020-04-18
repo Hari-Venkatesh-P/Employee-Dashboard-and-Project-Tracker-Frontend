@@ -5,26 +5,35 @@
             <label for="exampleInputEmail1"><b>Employee ID</b></label>
             <input  class="form-control"  formControlName="id" name="id" value="{{maxEmpID}}"  readonly>
         </div>
-        <div class="form-group invalid" [ngClass]="{'has-error' : employeeForm.get('name').touched}">
-            <label for="exampleInputEmail1"><b>Employee Name</b></label>
-            <input type="text"  formControlName="name" class="form-control" name="name" >
+        <div class="form-group">
+          <label for="name">Employee Name :</label>
+          <div [ngClass]="{'errorField' : employeeForm.get('name').errors && (employeeForm.get('name').touched || employeeForm.get('name').dirty)}"><input type="text" formControlName="name" name="name" class="form-control" id="name" aria-describedby="name"></div>
+          <span *ngIf="employeeForm.get('name').errors && (employeeForm.get('name').touched || employeeForm.get('name').dirty)">
+            <span style="color:red;font-size:15px">Employee name is madantory</span>
+          </span>
         </div>
         <div class="form-group">
-          <label for="exampleInputEmail1"><b>Employee Email</b></label>
-          <input type="text"  class="form-control" formControlName="email" name="email" >
+          <label for="email">Email :</label>
+          <div [ngClass]="{'errorField' : ((employeeForm.get('email').errors && (employeeForm.get('email').touched || employeeForm.get('email').dirty)) && employeeForm.get('email').touched)}"><input type="text" formControlName="email" name="email" class="form-control" id="email" aria-describedby="email"></div>
+          <span *ngIf="((employeeForm.get('email').errors && (employeeForm.get('email').touched || employeeForm.get('email').dirty)) && employeeForm.get('email').touched)">
+            <span style="color:red;font-size:15px">Check the mail format</span>
+          </span>
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1"><b>Employee Mobile</b></label>
-            <input type="text"  class="form-control" formControlName="mobile" name="mobile" >
-        </div>
+          <label for="mobile">Employee Mobile :</label>
+          <div [ngClass]="{'errorField' : ((employeeForm.get('mobile').errors && (employeeForm.get('mobile').touched || employeeForm.get('mobile').dirty)) && employeeForm.get('mobile').touched)} "><input type="text" formControlName="mobile" name="mobile" class="form-control" id="mobile" aria-describedby="mobile"></div>
+          <span *ngIf="((employeeForm.get('mobile').errors && (employeeForm.get('mobile').touched || employeeForm.get('mobile').dirty)) && employeeForm.get('mobile').touched)">
+            <span style="color:red;font-size:15px">Mobile number is of 10 digits</span>
+          </span>
+      </div>
         <div class="form-group">
-          <label for="exampleInputEmail1"><b>Employee Gender</b></label>
+          <label for="gender"><b>Employee Gender</b></label>
           <div class="form-check">
               <input  class="form-check-input" type="radio" name="gender" formControlName="gender" id="gridRadios1" value="Male" checked>
               <label class="form-check-label" for="gridRadios1">
                 Male &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               </label> 
-              <input  class="form-check-input" type="radio" name="gender" formControlName="gender" id="gridRadios1" value="Female" checked>
+              <input  class="form-check-input" type="radio" name="gender" formControlName="gender" id="gridRadios1" value="Female">
               <label class="form-check-label" for="gridRadios1">
                 Female 
               </label>
@@ -34,7 +43,7 @@
             </div>
           </div>
         <div class="form-group">
-            <label for="exampleInputEmail1"><b>Employee Type</b></label>
+            <label for="Type"><b>Employee Type</b></label>
             <div class="form-check">
                 <input  class="form-check-input" type="radio" name="type" formControlName="type" id="gridRadios1" value="Internship" checked>
                 <label class="form-check-label" for="gridRadios1">
@@ -55,7 +64,7 @@
               </div>
         </div>
         <div class="form-group">
-            <label for="disabledSelect"><b>Employee Department</b></label>
+            <label for="disabledSelect"><b>Employee Designation</b></label>
             <select name="department" class="form-control" formControlName="department" required>
               <option>Developer</option>
               <option>Tester</option>
